@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Registro de Empleados</title>
+  </head>
+
+  <body>
+    <div>
+      <form action="/buscar/" method="POST">
+        <label>Nombre: </label>
+        <input type="text" name="name" required maxlength="49"/>
+        <br />
+        <label>Fecha de Nacimiento: </label>
+        <input type="date" name="nacimiento" required />
+        <br />
+        <label>Correo electrónico: </label>
+        <input type="email" name="mail" required />
+        <br />
+        <label>Genero: </label>
+        <select name="genero">
+          <option value="A" selected> Selecciona una opción</option>
+          <option value="H">Hombre</option>
+          <option value="M">Mujer</option>
+        </select>
+        <br />
+        <label>Teléfono: </label>
+        <input type="text" name="tel"  pattern="[0-9]{10}" placeholder="10 digitos"/>
+        <br />
+        <label>Celular: </label>
+        <input type="text" name="cel" pattern="[0-9]{10}" placeholder="10 digitos"/>
+        <br />
+        <label>Fecha de Ingreso: </label>
+        <input type="date" name="ingreso" required  />
+        <br />
+        <input type="submit" value="Guardar" />
+      </form>
+    </div>
+  </body>
+</html>

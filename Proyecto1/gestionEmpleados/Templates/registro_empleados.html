@@ -1,0 +1,88 @@
+
+{% extends "empleados.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'Registrar' %}">Alta de Empleados <span class="sr-only"></span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Buscar' %}" >Consulta de Empleados</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Eliminar' %}">Eliminar Empleados</a>
+                  </li>
+              </ul>
+          </div>
+        </nav>
+        <p></p>
+          <hr>
+        <div class="row text-center">
+          <div class="col-md-7">
+            <h4>Registro de Empleados</h4>
+              <form action="/registroE/" method="POST"> {% csrf_token %}
+                    <table class="table" style="width:80%; aling:center;">
+                        <tr>
+                          <td style="width:200px;"><label>Nombre*: </label></td>
+                          <td><input type="text" name="name" required maxlength="49" size="50"/></td>
+                        </tr>
+                        <tr>
+                          <td><label>Fecha de Nacimiento*: </label></td>
+                          <td><input type="date" name="nacimiento" required /></td>
+                        </tr>
+                        <tr>
+                          <td><label>Correo electrónico*: </label></td>
+                          <td><input type="email" name="mail" required size="50"/></td>
+                        </tr>
+                        <tr>
+                          <td><label>Género: </label></td>
+                          <td>
+                            <select name="genero">
+                                <option value="A" selected> Selecciona una opción</option>
+                                <option value="H">Hombre</option>
+                                <option value="M">Mujer</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><label>Teléfono: </label></td>
+                          <td> <input type="text" name="tel"  pattern="[0-9]{10}" placeholder="10 digitos" size="50"/></td>
+                        </tr>
+                        <tr>
+                          <td><label>Celular: </label></td>
+                          <td><input type="text" name="cel" pattern="[0-9]{10}" placeholder="10 digitos" size="50"/></td>
+                        </tr>
+                        <tr>
+                          <td> <label>Fecha de Ingreso*: </label></td>
+                          <td><input type="date" name="ingreso" required  /></td>
+                        </tr>
+                        <tr>
+                          <td> <label>Departamento*: </label></td>
+                          <td>
+                              <select name="depto">
+                                <option value="A" selected> Selecciona una opción</option>
+                                {% for e in departamentos %}
+                                      <option value="{{e.id}}">{{e}}-{{e.emp}}</option>
+                                {% endfor %}
+                              </select>
+                          </td>
+                        </tr>
+                    <table>
+                    <div>
+                        <input type="submit" value="Guardar" /> 
+                    </div>
+                </form>
+               </div> 
+        </div>
+
+    </div>
+
+  {% endblock %}

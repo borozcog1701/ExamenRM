@@ -1,0 +1,49 @@
+{% extends "departamentos.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'RegistrarD' %}">Alta de Departamentos <span class="sr-only"></span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'BuscarD' %}">Consulta de Departamentos</a>
+                  </li>
+              </ul>
+          </div>
+          </nav>
+          <p></p>
+          <hr>
+        <div class="row text-center">
+          <div class="col-md-7">
+            <h4>Actualización de Departamentos</h4>
+              <form action="#" method="POST"> {% csrf_token %}
+                    <table class="table" style="width:80%; aling:center;">
+                        <tr>
+                          <td style="width:200px;"><label>Nombre*: </label></td>
+                          <td><input type="text" name="name" required maxlength="49" value="{{departamento}}"/></td>
+                        </tr>
+                        <tr>
+                          <td><label>Empresa: </label></td>
+                          <td> <input type="text" name="emp"  size="50" value="{{departamento.emp}}"/></td>
+                          <td> <input type="hidden" name="emp1"  size="50" value="{{empresa.id}}"/></td>
+                        </tr>
+                    <table>
+                    <div>
+                        <input type="submit" value="Guardar" /> 
+                    </div>
+                </form>
+               </div> 
+        </div>
+
+    </div>
+
+  {% endblock %}

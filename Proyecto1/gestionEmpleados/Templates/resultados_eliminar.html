@@ -1,0 +1,64 @@
+{% extends "empleados.html" %}
+{% load static %}
+{% block content %}
+
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'Registrar' %}">Alta de Empleados <span class="sr-only"></span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Buscar' %}" >Consulta de Empleados</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Eliminar' %}">Eliminar Empleados</a>
+                  </li>
+              </ul>
+          </div>
+          <p></p>
+          <hr>
+      {% if articulos%}
+      <p>Empleados encontrados {{articulos|length}} articulos</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Correo Electronico</th>
+            <th>Genero</th>
+            <th>Telefono</th>
+            <th>Celular</th>
+            <th>Fecha de Ingreso</th>
+            <th>Departamento</th>
+            <th>Empresa</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for articulo in articulos%}
+          <tr>
+            <td>{{articulo.nombre}}</td>
+            <td>{{articulo.fechanac}}</td>
+            <td>{{articulo.email}}</td>
+            <td>{{articulo.genero}}</td>
+            <td>{{articulo.telefono}}</td>
+            <td>{{articulo.cel}}</td>
+            <td>{{articulo.fechaing}}</td>
+            <td>{{articulo.depto}}</td>
+            <td>{{articulo.depto.emp}}</td>
+            <td><a href="{% url 'Borrar' articulo.id %}" class="btn btn-danger">Eliminar</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% endif%}
+    </div>
+ {% endblock %}

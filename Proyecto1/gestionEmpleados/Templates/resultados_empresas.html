@@ -1,0 +1,56 @@
+{% extends "empresas.html" %}
+{% load static %}
+{% block content %}
+
+ 
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'RegistrarE' %}">Alta de Empresas <span class="sr-only"></span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'BuscarE' %}">Consulta de Empresas</a>
+                  </li>
+              </ul>
+          </div>
+          </nav>
+          <p></p>
+          <hr>
+      {% if articulos%}
+      <p>Empresas encontradas: {{articulos|length}} </p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for articulo in articulos%}
+          <tr>
+            <td>{{articulo.nombre}}</td>
+            <td>{{articulo.contacto}}</td>
+            <td>{{articulo.direccion}}</td>
+            <td>{{articulo.telefono}}</td>
+            <td>
+                <a href="{% url 'EditarE' articulo.id %}" class="btn btn-primary">Editar</a>
+                <a href="{% url 'EliminarE' articulo.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% endif%}
+    </div>
+ {% endblock %}

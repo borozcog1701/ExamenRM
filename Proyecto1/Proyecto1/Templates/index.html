@@ -1,0 +1,63 @@
+<html>
+  <head>
+   {% load static %}
+  <title>Login</title>
+    <!-- Bootstrap -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <link href="{% static 'gestionEmpleados/css/login.css' %}" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="container">
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img
+              src="{% static 'gestionEmpleados/img/user.png' %}" 
+              id="icon"
+              alt="User Icon"
+            />
+          </div>
+
+          <!-- Login Form -->
+          <form>
+            <input
+              type="text"
+              id="login"
+              class="fadeIn second"
+              name="login"
+              placeholder="login"
+            />
+            <input
+              type="text"
+              id="password"
+              class="fadeIn third"
+              name="login"
+              placeholder="password"
+            />
+            <input type="submit" class="fadeIn fourth" value="Log In" />
+          </form>
+
+          <!-- Remind Passowrd <a class="underlineHover" href="#">Forgot Password?</a>-->
+          <div id="formFooter">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
